@@ -45,7 +45,8 @@ what if our mouse is the jorb, when the force from star wars is toggled on you c
   - Ke = The jorb constant, 9*10^9 
 
 - Does this force require any new information to be added to the `Orb` class? If so, what is it and what data type will you use?
-  - I dod not believe so.
+  - Int ldside
+  - if 1, is light side, if -1, is dark side. Modify what hte force does to it accordingly. (this is just a negative vs positively charged)
 
 - Does this force interact with other `Orbs`, or is it applied based on the environment?
   - This force pulls and pushes other orbs around it.
