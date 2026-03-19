@@ -33,22 +33,25 @@ All projects will require the following:
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)
 
 E = Keq/r^2
+i cant lie we are basically using the electrostatic force for this since it pulls and pushes things and electrostatic fields and stuff flow through everything much like the force does.
+HEAR ME OUT TEAM-MATES.
+what if our mouse is the jorb, when the force from star wars is toggled on you can left click to do force push of all the orbs away from your cursor and use right click to force pull all orbs towards your cursor, so you can actually like have the force from star wars and stuff.
 
 ### Custom Force Breakdown
 - What information that is already present in the `Orb` or `OrbNode` classes does this force use?
   - size, mass, velocity, acceleration, center, 
 
 - Does this force require any new constants, if so what are they and what values will you try initially?
-  - Ke = The jorb constant
+  - Ke = The jorb constant, 9*10^9 
 
 - Does this force require any new information to be added to the `Orb` class? If so, what is it and what data type will you use?
-  - YOUR ANSWER HERE
+  - I dod not believe so.
 
 - Does this force interact with other `Orbs`, or is it applied based on the environment?
-  - YOUR ANSWER HERE
+  - This force pulls and pushes other orbs around it.
 
 - In order to calculate this force, do you need to perform extra intermediary calculations? If so, what?
-  - YOUR ANSWER HERE
+  - find the distance between orbs and the jorb
 
 --- 
 
@@ -60,26 +63,24 @@ Describe how you will attempt to simulate orbital motion.
 ### Simulation 2: Spring
 Describe what your spring simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
+copy spring code from lab.
 
 --- 
 
 ### Simulation 3: Drag
 Describe what your drag simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
+copy drag code from.... LAB!
 
 --- 
 
 ### Simulation 4: Custom force
 Describe what your Custom force simulation will look like. Explain how it will be setup, and how it should behave while running.
-
-YOUR ANSWER HERE
+the jorb will either pull or push other orbs to or from it based on the toggle.
 
 --- 
 
 ### Simulation 5: Combination
 Describe what your combination simulation will look like. Explain how it will be setup, and how it should behave while running.
-
-YOUR ANSWER HERE
+imagine the previous lab, but you can push and pull orbs with your mouse, thus making it COOLER.
 
