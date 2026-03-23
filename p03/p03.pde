@@ -1,32 +1,3 @@
-/** -----------------------------------------------
- SpringArrayDriver (Most Work Goes Here)
- 
- TASK:
- You will write a program that creates an array of orbs.
- When run, the simulation should show the orbs,
- connected by springs,
- moving according to the push/pull of the spring forces.
- 
- Earth gravity will be a toggle-able option,
- as well as whether the simulation is running movement or not.
- 
- Part 0: Create and populate the array of orbs.
- 
- Part 1: Draw the "springs" connecting the orbs.
- 
- Part 2: Calculate and apply the spring force to the
- orbs in the array.
- Part 3: Apply earth based gravity and drag if those
- options are turned on.
- 
- Part 4: Allow for the removal and addition of orbs
- 
- CONCURRENT TASK:
- As you go, or just before you submit,
- Fill in the placeholder comment zones with YOUR OWN WORDS.
- ----------------------------------------------- */
-
-
 int NUM_ORBS = 10;
 int MIN_SIZE = 10;
 int MAX_SIZE = 60;
