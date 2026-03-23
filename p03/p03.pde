@@ -5,8 +5,9 @@ float MIN_MASS = 10;
 float MAX_MASS = 100;
 float G_CONSTANT = 1;
 float D_COEF = 0.1;
-float F_COEF = 9000000;
+float F_COEF = 900000;
 int fMode;
+int fPower;
 
 int SPRING_LENGTH = 50;
 float  SPRING_K = 0.005;
@@ -34,6 +35,7 @@ void setup()
   earth = new FixedOrb(width/2, height/5, 100, 10);
 
   fMode = LIGHT;
+  fPower = 1;
 }//setup
 
 
@@ -205,6 +207,12 @@ void keyPressed()
   if (keyCode == SHIFT) {
     fMode *= -1;
   }
+  if (keyCode == UP) {
+    fPower += 10;
+  }
+  if (keyCode == DOWN) {
+    fPower -= 10;
+  }
 }//keyPressed
 
 
@@ -229,14 +237,15 @@ void displayMode()
     rect(x, 0, w+5, 20);
     fill(0);
     text(modes[m], x+2, 2);
-    // force mode text
+    // force mode and power text
     if (m == THEF) {
       textSize(15);
       if (fMode == LIGHT) {
-        text("The Force: Light", x + 5, 20);
+        text("The Force side: Light", x + 5, 20);
       } else if (fMode == DARK) {
-        text("The Force: Dark", x + 5, 20);
+        text("The Force side: Dark", x + 5, 20);
       }
+      text("The Force Power: " + fPower, x+5, 40);
     }
     x+= w+5;
   }

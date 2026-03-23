@@ -14,12 +14,12 @@ class Orb
   {
     
     bsize = random(10, MAX_SIZE);
-    if (random(2) == 0) {
+    if (int(random(2)) == 0) {
       println("hi");
-      charge = -1;
+      charge = DARK;
     }
     else {
-      charge = 1;
+      charge = LIGHT;
       println("hello");
     }
     float x = random(bsize/2, width-bsize/2);
@@ -69,7 +69,7 @@ class Orb
     rad*= rad;
     
     PVector theForce = direction.mult((cf * charge * fMode) / rad);
-    return theForce;
+    return theForce.mult(fPower);
     //PVector theForce = velocity.copy();
     //theForce.normalize();
    // println(theForce);
@@ -155,6 +155,14 @@ class Orb
     color c0 = color(0, 255, 255);
     color c1 = color(0);
     c = lerpColor(c0, c1, (mass-MIN_SIZE)/(MAX_MASS-MIN_SIZE));
+    
+    // test
+    if (charge == LIGHT) {
+      c = color(181);
+    }
+    else {
+      c = color(0);
+    }
   }//setColor
 
 
