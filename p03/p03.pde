@@ -6,6 +6,7 @@ float MAX_MASS = 100;
 float G_CONSTANT = 1;
 float D_COEF = 0.1;
 float F_COEF = 9000000;
+int fMode;
 
 int SPRING_LENGTH = 50;
 float  SPRING_K = 0.005;
@@ -14,8 +15,11 @@ int MOVING = 0;
 int BOUNCE = 1;
 int GRAVITY = 2;
 int DRAGF = 3;
-boolean[] toggles = new boolean[4];
-String[] modes = {"Moving", "Bounce", "Gravity", "Drag"};
+int THEF = 4;
+int LIGHT = 1;
+int DARK = -1;
+boolean[] toggles = new boolean[5];
+String[] modes = {"Moving", "Bounce", "Gravity", "Drag", "The Force"};
 
 FixedOrb earth;
 Orb[] orbs;
@@ -26,10 +30,10 @@ void setup()
 {
   size(600, 600);
 
-  //Part 0: Write makeOrbs below
   makeOrbs(true);
-  //Part 3: create earth to simulate gravity
   earth = new FixedOrb(width/2, height/5, 100, 10);
+
+  fMode = LIGHT;
 }//setup
 
 
@@ -39,23 +43,18 @@ void draw()
   displayMode();
   earth.display();
 
-  //draw the orbs and springs
   for (int o=0; o < orbCount; o++) {
     orbs[o].display();
 
-    //Part 1: write drawSpring below
-    //Use drawspring correctly to draw springs
     if (o < orbCount - 1) {
       drawSpring(orbs[o], orbs[o+1]);
     }
   }//draw orbs & springs
 
   if (toggles[MOVING]) {
-    //Part 2: write applySprings below
     applySprings();
 
 
-    //part 3: apply other forces if toggled on
     for (int o=0; o < orbCount; o++) {
       if (toggles[GRAVITY]) {
         //if (orbs[o] != null) {
@@ -73,22 +72,6 @@ void draw()
   }//moving
 }//draw
 
-
-/**
- makeOrbs(boolean ordered)
- 
- Set orbCount to NUM_ORBS
- Initialize and create orbCount Orbs in orbs.
- All orbs should have random mass and size.
- The first orb should be a FixedOrb
- If ordered is true:
- The orbs should be spaced SPRING_LENGTH distance
- apart along the middle of the screen.
- If ordered is false:
- The orbs should be positioned radomly.
- 
- Each orb will be "connected" to its neighbors in the array.
- */
 void makeOrbs(boolean ordered)
 {
 
@@ -102,12 +85,12 @@ void makeOrbs(boolean ordered)
     float x = offset;
     float y = height / 2;
     int charge;
-    if (int(random(1)) == 1) {
-      println("hi");
-      charge = -1;
+    if (int(random(2)) == 1) {
+      println("light");
+      charge = LIGHT;
     } else {
-      charge = 1;
-      println("h");
+      charge = DARK;
+      println("dark");
     }
 
     if (ordered) {
@@ -128,16 +111,6 @@ void makeOrbs(boolean ordered)
   }
 }//makeOrbs
 
-
-/**
- drawSpring(Orb o0, Orb o1)
- 
- Draw a line between the two Orbs.
- Line color should change as follows:
- red: The spring is stretched.
- green: The spring is compressed.
- black: The spring is at its normal length
- */
 void drawSpring(Orb o0, Orb o1)
 {
   PVector a = o0.center;
@@ -155,18 +128,6 @@ void drawSpring(Orb o0, Orb o1)
   line(a.x, a.y, b.x, b.y);
 }//drawSpring
 
-
-/**
- applySprings()
- 
- FIRST: Fill in getSpring in the Orb class.
- 
- THEN:
- Go through the Orbs array and apply the spring
- force correctly for each orb. We will consider every
- orb as being "connected" via a spring to is
- neighboring orbs in the array.
- */
 void applySprings()
 {
   PVector f = new PVector();
@@ -191,22 +152,12 @@ void applyTF(float mx, float my) {
 }
 
 void mousePressed() {
-  //if toggled
-  applyTF(mouseX, mouseY);
-  println("pressed");
+  if (toggles[THEF]) {
+    applyTF(mouseX, mouseY);
+    //println("pressed");
+  }
 }
 
-
-/**
- addOrb()
- 
- Add an orb to the arry of orbs.
- 
- If the array of orbs is full, make a
- new, larger array that contains all
- the current orbs and the new one.
- (check out arrayCopy() to help)
- */
 void addOrb()
 {
   if (orbCount == orbs.length) { // array full
@@ -220,14 +171,6 @@ void addOrb()
   //}
 }//addOrb
 
-
-/**
- keyPressed()
- 
- Toggle the various modes on and off
- Use 1 and 2 to setup model.
- Use - and + to add/remove orbs.
- */
 void keyPressed()
 {
   if (key == ' ') {
@@ -242,6 +185,9 @@ void keyPressed()
   if (key == 'd') {
     toggles[DRAGF]   = !toggles[DRAGF];
   }
+  if (key == 'f') {
+    toggles[THEF] = !toggles[THEF];
+  }
   if (key == '1') {
     makeOrbs(true);
   }
@@ -250,14 +196,15 @@ void keyPressed()
   }
 
   if (key == '-') {
-    //Part 4: Write code to remove an orb from the array
     orbCount -= 1;
   }//removal
   if (key == '+') {
-    //Part 4: Write addOrb() below
     addOrb();
     //println("add");
   }//addition
+  if (keyCode == SHIFT) {
+    fMode *= -1;
+  }
 }//keyPressed
 
 
@@ -282,6 +229,15 @@ void displayMode()
     rect(x, 0, w+5, 20);
     fill(0);
     text(modes[m], x+2, 2);
+    // force mode text
+    if (m == THEF) {
+      textSize(15);
+      if (fMode == LIGHT) {
+        text("The Force: Light", x + 5, 20);
+      } else if (fMode == DARK) {
+        text("The Force: Dark", x + 5, 20);
+      }
+    }
     x+= w+5;
   }
 }//display
