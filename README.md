@@ -57,7 +57,7 @@ what if our mouse is the jorb, when the force from star wars is toggled on you c
 --- 
 
 ### Simulation 1: Gravity
-Describe how you will attempt to simulate orbital motion.
+use gravity code from lab
 
 --- 
 
@@ -77,11 +77,14 @@ copy drag code from.... LAB!
 
 ### Simulation 4: Custom force
 Describe what your Custom force simulation will look like. Explain how it will be setup, and how it should behave while running.
-the jorb will either pull or push other orbs to or from it based on the toggle.
+
+the jorb will push or pull the other orbs based on the settings/if the orbs in question are light side or dark side
 
 --- 
 
 ### Simulation 5: Combination
 Describe what your combination simulation will look like. Explain how it will be setup, and how it should behave while running.
-imagine the previous lab, but you can push and pull orbs with your mouse, thus making it COOLER.
+
+imagine the previous lab, but you can push and pull orbs with your jorb, thus making it COOLER.
+
 
