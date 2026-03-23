@@ -5,6 +5,7 @@ float MIN_MASS = 10;
 float MAX_MASS = 100;
 float G_CONSTANT = 1;
 float D_COEF = 0.1;
+float F_COEF = 9000000;
 
 int SPRING_LENGTH = 50;
 float  SPRING_K = 0.005;
@@ -53,6 +54,7 @@ void draw()
     //Part 2: write applySprings below
     applySprings();
 
+
     //part 3: apply other forces if toggled on
     for (int o=0; o < orbCount; o++) {
       if (toggles[GRAVITY]) {
@@ -99,6 +101,14 @@ void makeOrbs(boolean ordered)
     float m = random(MIN_MASS, MAX_MASS);
     float x = offset;
     float y = height / 2;
+    int charge;
+    if (int(random(1)) == 1) {
+      println("hi");
+      charge = -1;
+    } else {
+      charge = 1;
+      println("h");
+    }
 
     if (ordered) {
       x += SPRING_LENGTH * i;
@@ -113,7 +123,7 @@ void makeOrbs(boolean ordered)
       orbs[i] = new FixedOrb(x, y, s, m);
       //earth = orbs[i];
     } else {
-      orbs[i] = new Orb(x, y, s, m);
+      orbs[i] = new Orb(x, y, s, m, charge);
     }
   }
 }//makeOrbs
@@ -173,6 +183,19 @@ void applySprings()
   }
 }//applySprings
 
+void applyTF(float mx, float my) {
+  PVector mLoc = new PVector(mx, my);
+  for (int i = 0; i < orbCount; i++) {
+    orbs[i].applyForce(orbs[i].getTF(F_COEF, mLoc));
+  }
+}
+
+void mousePressed() {
+  //if toggled
+  applyTF(mouseX, mouseY);
+  println("pressed");
+}
+
 
 /**
  addOrb()
@@ -192,8 +215,8 @@ void addOrb()
     orbs = newOrbs;
   }
   //else {
-    orbs[orbCount] = new Orb();
-    orbCount += 1;
+  orbs[orbCount] = new Orb();
+  orbCount += 1;
   //}
 }//addOrb
 
