@@ -1,9 +1,10 @@
-## Project 00
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/OwTRjgv_)
+## Project 03
 ### NeXTCS
-### Period: 
-## Thinker0: YOUR NAME HERE
-## Thinker1: OTHER NAME HERE
-## Thinker2: OTHER NAME HERE (delete this line if you are a duo)
+### Period: 9
+## Thinker0: Benjamin Rosenstein
+## Thinker1: Connor Meyer
+## Thinker2: Zarah Mahreen
 ---
 
 This project will be completed in phases. The first phase will be to work on this document. Use github-flavoured markdown. (For more markdown help [click here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) or [here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) )
@@ -26,59 +27,64 @@ All projects will require the following:
 ## Phase 0: Force Selection, Analysis & Plan
 ---------- 
 
-#### Custom Force: NAME OF YOUR FORCE
+#### Custom Force: The Force from Star Wars (just the original trilogy)
 
 ### Custom Force Formula
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)
 
-YOUR ANSWER HERE
+E = Keq/r^2
+i cant lie we are basically using the electrostatic force for this since it pulls and pushes things and electrostatic fields and stuff flow through everything much like the force does.
+HEAR ME OUT TEAM-MATES.
+what if our mouse is the jorb, when the force from star wars is toggled on you can left click to do force push of all the orbs away from your cursor and use right click to force pull all orbs towards your cursor, so you can actually like have the force from star wars and stuff.
 
 ### Custom Force Breakdown
 - What information that is already present in the `Orb` or `OrbNode` classes does this force use?
-  - YOUR ANSWER HERE
+  - size, mass, velocity, acceleration, center, 
 
 - Does this force require any new constants, if so what are they and what values will you try initially?
-  - YOUR ANSWER HERE
+  - Ke = The jorb constant, 9*10^9 
 
 - Does this force require any new information to be added to the `Orb` class? If so, what is it and what data type will you use?
-  - YOUR ANSWER HERE
+  - Int ldside
+  - if 1, is light side, if -1, is dark side. Modify what hte force does to it accordingly. (this is just a negative vs positively charged)
 
 - Does this force interact with other `Orbs`, or is it applied based on the environment?
-  - YOUR ANSWER HERE
+  - This force pulls and pushes other orbs around it.
 
 - In order to calculate this force, do you need to perform extra intermediary calculations? If so, what?
-  - YOUR ANSWER HERE
+  - find the distance between orbs and the jorb
 
 --- 
 
 ### Simulation 1: Gravity
-Describe how you will attempt to simulate orbital motion.
+use gravity code from lab
 
 --- 
 
 ### Simulation 2: Spring
 Describe what your spring simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
+copy spring code from lab.
 
 --- 
 
 ### Simulation 3: Drag
 Describe what your drag simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
+copy drag code from.... LAB!
 
 --- 
 
 ### Simulation 4: Custom force
 Describe what your Custom force simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
+the jorb will push or pull the other orbs based on the settings/if the orbs in question are light side or dark side
 
 --- 
 
 ### Simulation 5: Combination
 Describe what your combination simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
+imagine the previous lab, but you can push and pull orbs with your jorb, thus making it COOLER.
+
 
