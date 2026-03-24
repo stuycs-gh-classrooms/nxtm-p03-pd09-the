@@ -5,7 +5,7 @@ float MIN_MASS = 10;
 float MAX_MASS = 100;
 float G_CONSTANT = 1;
 float D_COEF = 0.1;
-float F_COEF = 900000;
+float F_COEF = 9000000;
 int fMode;
 int fPower;
 
@@ -150,8 +150,10 @@ void applySprings()
   }
 }//applySprings
 
-void applyTF(float mx, float my) {
-  PVector mLoc = new PVector(mx, my);
+void applyTF(PVector mLoc) {
+  //println("mx my: " + mx, my);
+  //PVector mLoc = new PVector(mx, my);
+  println("applyTF mouseLoc:" + mLoc);
   for (int i = 0; i < orbCount; i++) {
     orbs[i].applyForce(orbs[i].getTF(F_COEF, mLoc));
   }
@@ -159,8 +161,10 @@ void applyTF(float mx, float my) {
 
 void mousePressed() {
   if (toggles[THEF]) {
-    applyTF(mouseX, mouseY);
+    println("mousePressed: ", mouseX, mouseY);
+    applyTF(new PVector(mouseX, mouseY));
     //println("pressed");
+    //printlm
   }
 }
 
@@ -242,10 +246,10 @@ void keyPressed()
     fMode *= -1;
   }
   if (keyCode == UP) {
-    fPower += 10;
+    fPower += 1;
   }
   if (keyCode == DOWN) {
-    fPower -= 10;
+    fPower -= 1;
   }
 }//keyPressed
 

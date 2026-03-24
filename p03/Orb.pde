@@ -62,14 +62,15 @@ class Orb
   }
   
   PVector getTF(float cf, PVector mouseLoc){
-    PVector direction = mouseLoc.sub(center);
+    println("getTF mouseLoc:" + mouseLoc);
+    PVector direction = PVector.sub(center, mouseLoc);
     direction.normalize();
     
     float rad =  mouseLoc.dist(this.center);
     rad*= rad;
     
-    PVector theForce = direction.mult((cf * charge * fMode) / rad);
-    return theForce.mult(fPower);
+    PVector theForce = direction.mult((cf * charge * fMode * fPower) / rad);
+    return theForce;
     //PVector theForce = velocity.copy();
     //theForce.normalize();
    // println(theForce);
