@@ -9,16 +9,15 @@ class Orb
   float mass;
   color c;
   int charge;
-  
+
   Orb()
   {
-    
+
     bsize = random(10, MAX_SIZE);
     if (int(random(2)) == 0) {
       println("hi");
       charge = DARK;
-    }
-    else {
+    } else {
       charge = LIGHT;
       println("hello");
     }
@@ -30,7 +29,7 @@ class Orb
     acceleration = new PVector();
     setColor();
   }
-  
+
   Orb(float x, float y, float s, float m, int ch)
   {
     charge = ch;
@@ -60,25 +59,30 @@ class Orb
     scaleForce.div(mass);
     acceleration.add(scaleForce);
   }
-  
-  PVector getTF(float cf, PVector mouseLoc){
+
+  PVector getTF(float cf, PVector mouseLoc) {
+    PVector theForce = new PVector(0, 0, 0);
     println("getTF mouseLoc:" + mouseLoc);
     PVector direction = PVector.sub(center, mouseLoc);
     direction.normalize();
-    
+
     float rad =  mouseLoc.dist(this.center);
     rad*= rad;
-    
-    PVector theForce = direction.mult((cf * charge * fMode * fPower) / rad);
+    if (rad > 10000) {
+      theForce = direction.mult((cf * charge * fMode * fPower) / rad);
+    }
+    else {
+     theForce = new PVector(0, 0, 0);
+    }
     return theForce;
     //PVector theForce = velocity.copy();
     //theForce.normalize();
-   // println(theForce);
+    // println(theForce);
     //theForce.mult(((cf*this.charge*fMode)/rad));
     //println(theForce);
     //return(theForce);
   }
-    
+
 
   PVector getDragForce(float cd)
   {
@@ -156,12 +160,11 @@ class Orb
     color c0 = color(0, 255, 255);
     color c1 = color(0);
     c = lerpColor(c0, c1, (mass-MIN_SIZE)/(MAX_MASS-MIN_SIZE));
-    
+
     // test
     if (charge == LIGHT) {
       c = color(181);
-    }
-    else {
+    } else {
       c = color(0);
     }
   }//setColor

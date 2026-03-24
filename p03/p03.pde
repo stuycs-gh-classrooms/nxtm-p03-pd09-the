@@ -5,7 +5,7 @@ float MIN_MASS = 10;
 float MAX_MASS = 100;
 float G_CONSTANT = 1;
 float D_COEF = 0.1;
-float F_COEF = 9000000;
+float F_COEF = 90000;
 int fMode;
 int fPower;
 
@@ -159,7 +159,7 @@ void applyTF(PVector mLoc) {
   }
 }
 
-void mousePressed() {
+void mouseDragged() {
   if (toggles[THEF]) {
     println("mousePressed: ", mouseX, mouseY);
     applyTF(new PVector(mouseX, mouseY));
