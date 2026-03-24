@@ -13,14 +13,16 @@ int SPRING_LENGTH = 50;
 float  SPRING_K = 0.005;
 
 int MOVING = 0;
-int BOUNCE = 1;
+int SPRING = 1;
 int GRAVITY = 2;
 int DRAGF = 3;
 int THEF = 4;
+int COMBO = 5;
+int BOUNCE = 6;
 int LIGHT = 1;
 int DARK = -1;
-boolean[] toggles = new boolean[5];
-String[] modes = {"Moving", "Bounce", "Gravity", "Drag", "The Force"};
+boolean[] toggles = new boolean[7];
+String[] modes = {"Moving", "Spring", "Gravity", "Drag", "The Force", "Combination","bounce(?)"};
 
 FixedOrb earth;
 Orb[] orbs;
@@ -54,7 +56,9 @@ void draw()
   }//draw orbs & springs
 
   if (toggles[MOVING]) {
+    if(toggles[SPRING]){
     applySprings();
+    }
 
 
     for (int o=0; o < orbCount; o++) {
@@ -178,22 +182,52 @@ void keyPressed()
   if (key == ' ') {
     toggles[MOVING]  = !toggles[MOVING];
   }
-  if (key == 'g') {
-    toggles[GRAVITY] = !toggles[GRAVITY];
-  }
-  if (key == 'b') {
-    toggles[BOUNCE]  = !toggles[BOUNCE];
-  }
-  if (key == 'd') {
-    toggles[DRAGF]   = !toggles[DRAGF];
-  }
-  if (key == 'f') {
-    toggles[THEF] = !toggles[THEF];
-  }
   if (key == '1') {
+    
+    toggles[GRAVITY] = true;
+    toggles[THEF] = false;
+    toggles[DRAGF] = false;
+    toggles[SPRING] = false;
+    toggles[COMBO] = false;
     makeOrbs(true);
   }
   if (key == '2') {
+    toggles[SPRING]  = true;
+    toggles[GRAVITY] = true;
+    toggles[DRAGF] = false;
+    toggles[THEF] = false;
+    toggles[COMBO] = false;
+    makeOrbs(true);
+    
+  }
+  if (key == '3') {
+    toggles[DRAGF]   = true;
+    toggles[GRAVITY] = true;
+    toggles[THEF] = false;
+    toggles[SPRING] = false;
+    toggles[COMBO] = false;
+    makeOrbs(true);
+  }
+  if (key == '4') {
+    toggles[THEF] = true;
+    toggles[GRAVITY] = false;
+    toggles[DRAGF] = false;
+    toggles[SPRING] = false;
+    toggles[COMBO] = false;
+    makeOrbs(true);
+  }
+  if (key == '5') {
+    toggles[THEF] = true;
+    toggles[GRAVITY] = true;
+    toggles[DRAGF] = true;
+    toggles[SPRING] = true;
+    toggles[COMBO] = true;
+    makeOrbs(true);
+  }
+  if(key == '6'){
+    toggles[BOUNCE] = !toggles[BOUNCE];
+  }
+  if (key == 'T') {
     makeOrbs(false);
   }
 
